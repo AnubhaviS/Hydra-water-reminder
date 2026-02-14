@@ -1,4 +1,4 @@
-###Hydra – Water Reminder App
+##  Hydra – Water Reminder App
 
 Hydra is a clean, minimal, and aesthetic water reminder web app designed to help users stay hydrated and build a healthy daily habit.
 
