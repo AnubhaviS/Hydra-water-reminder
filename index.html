@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hydra - Water Reminder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Lucide Icons (via unpkg for vanilla JS) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-top">
+                <span id="current-date" class="date-text">Loading date...</span>
+                <button id="settings-btn" class="icon-btn" aria-label="Settings">
+                    <i data-lucide="settings"></i>
+                </button>
+            </div>
+            <h1>Hydra</h1>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Progress Section -->
+            <section class="progress-section">
+                <div class="progress-circle-container">
+                    <svg class="progress-ring" width="260" height="260">
+                        <circle class="progress-ring__circle-bg" stroke="rgba(255,255,255,0.3)" stroke-width="20" fill="transparent" r="110" cx="130" cy="130"/>
+                        <circle class="progress-ring__circle" stroke="#ffffff" stroke-width="20" fill="transparent" r="110" cx="130" cy="130"/>
+                    </svg>
+                    <div class="progress-content">
+                        <span id="percentage-text">0%</span>
+                        <div class="intake-details">
+                            <span id="current-intake">0</span> / <span id="goal-display">2500</span> ml
+                        </div>
+                    </div>
+                </div>
+                <p id="motivational-message">Stay hydrated!</p>
+            </section>
+
+            <!-- Controls -->
+            <section class="controls-section">
+                <div class="quick-add-buttons">
+                    <button class="add-btn small" onclick="app.addWater(250)">
+                        <span class="icon"><i data-lucide="glass-water"></i></span>
+                        <span>+250ml</span>
+                    </button>
+                    <button class="add-btn large" onclick="app.addWater(500)">
+                        <span class="icon"><i data-lucide="droplet"></i></span>
+                        <span>+500ml</span>
+                    </button>
+                </div>
+                <div class="extra-controls">
+                    <button id="undo-btn" class="text-btn" aria-label="Undo last add">Undo</button>
+                    <button id="reset-btn" class="text-btn danger" aria-label="Reset day">Reset Day</button>
+                </div>
+            </section>
+
+            <!-- Stats -->
+            <section class="stats-card">
+                <div class="stat-item">
+                    <span class="stat-label">Streak</span>
+                    <span id="streak-count" class="stat-value">0 Days</span>
+                </div>
+                <div class="stat-item">
+                     <span class="stat-label">Remaining</span>
+                     <span id="remaining-intake" class="stat-value">2500 ml</span>
+                </div>
+            </section>
+        </main>
+
+        <!-- Settings Modal -->
+        <div id="settings-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Daily Goal</h2>
+                    <button id="close-settings" class="icon-btn"><i data-lucide="x"></i></button>
+                </div>
+                <div class="modal-body">
+                    <label for="goal-input">Set your daily water goal (ml):</label>
+                    <input type="number" id="goal-input" value="2500" min="500" max="10000" step="100">
+                    <div class="preset-goals">
+                        <button class="chip" onclick="app.setGoal(2000)">2000ml</button>
+                        <button class="chip" onclick="app.setGoal(2500)">2500ml</button>
+                        <button class="chip" onclick="app.setGoal(3000)">3000ml</button>
+                    </div>
+                    <button id="save-goal-btn" class="primary-btn">Save Goal</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
